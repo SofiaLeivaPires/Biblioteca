@@ -2,18 +2,19 @@ import java.time.LocalDate;
 
 public class Emprestimo {
     private int id;
-//    livro
-//    cliente
+    private Livro livro;
+    private Cliente cliente;
     private LocalDate dataSaida;
     private LocalDate dataDevolucaoPrevista;
     private LocalDate dataDevolvida;
 
-    public Emprestimo(int id, LocalDate dataSaida, LocalDate dataDevolucaoPrevista, LocalDate dataDevolvida){
+    public Emprestimo(int id, Livro livro, Cliente cliente, LocalDate dataSaida, LocalDate dataDevolucaoPrevista, LocalDate dataDevolvida) {
         this.id = id;
+        this.livro = livro;
+        this.cliente = cliente;
         this.dataSaida = dataSaida;
         this.dataDevolucaoPrevista = dataDevolucaoPrevista;
-        this.dataDevolvida = dataDevolvida;
-
+        this.dataDevolvida = null;
     }
 
     public int getId() {

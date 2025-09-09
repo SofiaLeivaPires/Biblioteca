@@ -95,8 +95,30 @@ public class Main {
         System.out.println("3. Listar abertos");
         System.out.println("4. Histórico por cliente");
 
-
         int opcaoEmprestimo = lerOpcao();
+
+        switch (opcaoEmprestimo) {
+            case 1:
+                EmprestimoService.cadastrarCliente(clientesCadastrados);
+                break;
+            case 2:
+                EmprestimoService.listaCliente(clientesCadastrados);
+                break;
+            case 3:
+                EmprestimoService.buscarPorId(clientesCadastrados);
+                break;
+            case 4:
+                EmprestimoService.atualizarCliente(clientesCadastrados);
+                break;
+            case 5:
+                EmprestimoService.removerCliente(clientesCadastrados);
+                break;
+            default:
+                System.out.println("Opção inválida!");
+                System.out.println("Tente novamente ");
+                break;
+
+        }
 
     }
 
