@@ -64,16 +64,16 @@ public class LivroService {
         do {
             System.out.println("Digite o código do ISBN: ");
             String isbn = sc.next();
-            for (Livro buscaLivro: buscarLivro){
-                if (buscaLivro.getIsbn().equals(isbn)){
-                    mostrarLivro =  buscaLivro.toString();
+            for (Livro buscaLivro : buscarLivro) {
+                if (buscaLivro.getIsbn().equals(isbn)) {
+                    mostrarLivro = buscaLivro.toString();
                     System.out.println(mostrarLivro);
                     teste = true;
+                    break;
                 } else {
-                    System.out.println("ISBN inválido, digite novamente: ");
                     teste = false;
                 }
-            break;
+
             }
         } while (teste == false);
 
@@ -81,8 +81,8 @@ public class LivroService {
     }
 
     public static void atualizarLivro(ArrayList<Livro> atualizarLivro) {
-        System.out.println(buscarPorISBN(atualizarLivro));
-        System.out.println("O que gostaria de atualizar");
+        buscarPorISBN(atualizarLivro);
+        System.out.println("O que gostaria de atualizar?");
         System.out.println("1. Nome do livro");
         System.out.println("2. Nome do autor");
         System.out.println("3. Ano de lançamento");

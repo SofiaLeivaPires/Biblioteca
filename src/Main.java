@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Livro> livrosCadastrados = new ArrayList<>();
+    static ArrayList<Cliente> clientesCadastrados = new ArrayList<>();
 
     public static void main(String[] args) {
         Menu();
@@ -30,7 +31,6 @@ public class Main {
         int opcaoLivro = lerOpcao();
 
         switch (opcaoLivro) {
-//            Cadastro livro
             case 1:
                 LivroService.cadastrarLivro(livrosCadastrados);
                 break;
@@ -48,7 +48,7 @@ public class Main {
                 break;
             default:
                 System.out.println("Opção inválida!");
-                System.out.println("Tente novamente: ");
+                System.out.println("Tente novamente ");
                 break;
 
         }
@@ -64,6 +64,28 @@ public class Main {
 
         int opcaoClinte = lerOpcao();
 
+        switch (opcaoClinte) {
+            case 1:
+                LivroService.cadastrarLivro(livrosCadastrados);
+                break;
+            case 2:
+                LivroService.listarLivrosCadastrados(livrosCadastrados);
+                break;
+            case 3:
+                LivroService.buscarPorISBN(livrosCadastrados);
+                break;
+            case 4:
+                LivroService.atualizarLivro(livrosCadastrados);
+                break;
+            case 5:
+                LivroService.removerLivro(livrosCadastrados);
+                break;
+            default:
+                System.out.println("Opção inválida!");
+                System.out.println("Tente novamente ");
+                break;
+
+        }
     }
 
     public static void SubmenuEmprestimo(){
