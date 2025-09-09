@@ -5,7 +5,18 @@ public class LivroService {
 
     static Scanner sc = new Scanner(System.in);
 
+    public static Boolean isEmpty(ArrayList<Livro> listaLivros){
+        if (listaLivros.isEmpty()) {
+            System.out.println("A lista está vazia");
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public static void cadastrarLivro(ArrayList<Livro> listaLivroCadastrar) {
+
         System.out.println("Digite o nome do livro: ");
         String nomeLivro = sc.next();
         sc.nextLine();
@@ -43,35 +54,41 @@ public class LivroService {
 
     public static void listarLivrosCadastrados(ArrayList<Livro> listaLivros){
         String mostrarLivroCadastrados = "";
-        if (listaLivros.isEmpty()){
-            System.out.println("A lista está vazia");
-        } else {
+
+
+        if (isEmpty(listaLivros).equals(false)) {
             System.out.println("LISTA DE LIVROS: ");
-        }
-        for (Livro livroCadastrado: listaLivros){
-            mostrarLivroCadastrados +=  livroCadastrado.toString() + "\n";
 
+            for (Livro livroCadastrado: listaLivros){
+                mostrarLivroCadastrados +=  livroCadastrado.toString() + "\n";
+
+            }
+
+            System.out.println(mostrarLivroCadastrados);
         }
 
-        System.out.println(mostrarLivroCadastrados);
     }
 
     public static String buscarPorISBN(ArrayList<Livro> buscarLivro){
+
         String mostrarLivro = "";
 
         boolean teste = true;
 
         do {
-            System.out.println("Digite o código do ISBN: ");
-            String isbn = sc.next();
-            for (Livro buscaLivro : buscarLivro) {
-                if (buscaLivro.getIsbn().equals(isbn)) {
-                    mostrarLivro = buscaLivro.toString();
-                    System.out.println(mostrarLivro);
-                    teste = true;
-                    break;
-                } else {
-                    teste = false;
+            if (isEmpty(buscarLivro).equals(false)) {
+                System.out.println("Digite o código do ISBN: ");
+                String isbn = sc.next();
+                for (Livro buscaLivro : buscarLivro) {
+                    if (buscaLivro.getIsbn().equals(isbn)) {
+                        mostrarLivro = buscaLivro.toString();
+                        System.out.println(mostrarLivro);
+                        teste = true;
+                        break;
+                    } else {
+                        teste = false;
+                    }
+
                 }
 
             }
@@ -82,47 +99,54 @@ public class LivroService {
 
     public static void atualizarLivro(ArrayList<Livro> atualizarLivro) {
         buscarPorISBN(atualizarLivro);
-        System.out.println("O que gostaria de atualizar?");
-        System.out.println("1. Nome do livro");
-        System.out.println("2. Nome do autor");
-        System.out.println("3. Ano de lançamento");
-        int opcao = sc.nextInt();
 
-        for (Livro atualizaLivro: atualizarLivro){
-            switch (opcao){
-                case 1:
-                    atualizaLivro.getTitulo();
-                    System.out.println("Digite o nome do livro: ");
-                    String nomeLivro = sc.next();
-                    sc.nextLine();
-                    atualizaLivro.setTitulo(nomeLivro);
-                    System.out.println(atualizaLivro);
-                    break;
-                case 2:
-                    atualizaLivro.getAutor();
-                    System.out.println("Digite o nome do autor: ");
-                    String nomeAutor = sc.next();
-                    atualizaLivro.setAutor(nomeAutor);
-                    System.out.println(atualizaLivro);
-                    break;
-                case 3:
-                    atualizaLivro.getAno();
-                    System.out.println("Digite o ano de lançamento: ");
-                    int ano = sc.nextInt();
-                    atualizaLivro.setAno(ano);
-                    System.out.println(atualizaLivro);
-                    break;
-                default:
-                    break;
+        if (atualizarLivro.isEmpty()){
+            System.out.print("");
+        } else {
+
+            System.out.println("O que gostaria de atualizar?");
+            System.out.println("1. Nome do livro");
+            System.out.println("2. Nome do autor");
+            System.out.println("3. Ano de lançamento");
+            int opcao = sc.nextInt();
+
+            for (Livro atualizaLivro: atualizarLivro){
+                switch (opcao){
+                    case 1:
+                        atualizaLivro.getTitulo();
+                        System.out.println("Digite o nome do livro: ");
+                        String nomeLivro = sc.next();
+                        sc.nextLine();
+                        atualizaLivro.setTitulo(nomeLivro);
+                        System.out.println(atualizaLivro);
+                        break;
+                    case 2:
+                        atualizaLivro.getAutor();
+                        System.out.println("Digite o nome do autor: ");
+                        String nomeAutor = sc.next();
+                        atualizaLivro.setAutor(nomeAutor);
+                        System.out.println(atualizaLivro);
+                        break;
+                    case 3:
+                        atualizaLivro.getAno();
+                        System.out.println("Digite o ano de lançamento: ");
+                        int ano = sc.nextInt();
+                        atualizaLivro.setAno(ano);
+                        System.out.println(atualizaLivro);
+                        break;
+                    default:
+                        break;
+
+                }
+                break;
+
 
             }
-            break;
-
+            System.out.println("-----------------------------");
+            System.out.println("Livro atualizado com sucesso!");
+            System.out.println("-----------------------------\n");
 
         }
-        System.out.println("-----------------------------");
-        System.out.println("Livro atualizado com sucesso!");
-        System.out.println("-----------------------------\n");
 
 
     }
