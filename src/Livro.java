@@ -70,4 +70,6 @@ public class Livro {
                 '}';
     }
 
+    public void set(String nomeLivro) {
+    }
 }

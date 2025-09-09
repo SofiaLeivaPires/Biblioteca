@@ -28,6 +28,17 @@ public class Main {
             case 2:
                 LivroService.listarLivrosCadastrados(livrosCadastrados);
                 break;
+            case 3:
+                LivroService.buscarPorISBN(livrosCadastrados);
+                break;
+            case 4:
+                LivroService.atualizarLivro(livrosCadastrados);
+                break;
+            case 5:
+                break;
+            default:
+                break;
+
         }
     }
 
