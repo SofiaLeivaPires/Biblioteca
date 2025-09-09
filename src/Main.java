@@ -6,9 +6,18 @@ public class Main {
     static ArrayList<Livro> livrosCadastrados = new ArrayList<>();
 
     public static void main(String[] args) {
-//        Livro anneFrank = new Livro("123","Anne","Anne",1984, true);
-//        livrosCadastrados.add(anneFrank);
         Menu();
+    }
+
+    public static int lerOpcao() {
+        while (true) {
+            String entrada = sc.nextLine();
+            try {
+                return Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                System.out.print("Opção inválida, digite apenas números: ");
+            }
+        }
     }
 
     public static void SubmenuLivros(){
@@ -18,7 +27,7 @@ public class Main {
         System.out.println("3. Buscar por ISBN");
         System.out.println("4. Atualizar livro");
         System.out.println("5. Remover livro");
-        int opcaoLivro = sc.nextInt();
+        int opcaoLivro = lerOpcao();
 
         switch (opcaoLivro) {
 //            Cadastro livro
@@ -35,8 +44,11 @@ public class Main {
                 LivroService.atualizarLivro(livrosCadastrados);
                 break;
             case 5:
+                LivroService.removerLivro(livrosCadastrados);
                 break;
             default:
+                System.out.println("Opção inválida!");
+                System.out.println("Tente novamente: ");
                 break;
 
         }
@@ -50,6 +62,8 @@ public class Main {
         System.out.println("4. Atualizar cliente");
         System.out.println("5. Remover cliente");
 
+        int opcaoClinte = lerOpcao();
+
     }
 
     public static void SubmenuEmprestimo(){
@@ -58,6 +72,9 @@ public class Main {
         System.out.println("2. Devolver livro");
         System.out.println("3. Listar abertos");
         System.out.println("4. Histórico por cliente");
+
+
+        int opcaoEmprestimo = lerOpcao();
 
     }
 
@@ -73,29 +90,38 @@ public class Main {
 
     public static void Menu() {
         int opcao;
-        do {
-            MenuPrincipal();
-            opcao = sc.nextInt();
+        try {
+            do {
+                MenuPrincipal();
+                opcao = lerOpcao();
 
-            switch (opcao) {
-                case 1:
-                    SubmenuLivros();
-                    break;
-                case 2:
-                    SubmenuClientes();
-                    break;
-                case 3:
-                    SubmenuEmprestimo();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    break;
+                switch (opcao) {
+                    case 1:
+                        SubmenuLivros();
+                        break;
+                    case 2:
+                        SubmenuClientes();
+                        break;
+                    case 3:
+                        SubmenuEmprestimo();
+                        break;
+                    case 0:
+                        System.out.println("Saindo...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida!!!");
+                        System.out.println("Tente novamente ");
 
-            }
-        } while (opcao != 0);
+                        break;
+
+                }
+            } while (opcao != 0);
+
+        } catch (Exception e) {
+            System.out.println("Informação inválida tente novamente");
+        } finally {
+            Menu();
+        }
 
 
     }

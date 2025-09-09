@@ -43,22 +43,40 @@ public class LivroService {
 
     public static void listarLivrosCadastrados(ArrayList<Livro> listaLivros){
         String mostrarLivroCadastrados = "";
-        for (Livro livroCadastrado: listaLivros){
-            mostrarLivroCadastrados += "\n" + livroCadastrado.toString();
+        if (listaLivros.isEmpty()){
+            System.out.println("A lista está vazia");
+        } else {
+            System.out.println("LISTA DE LIVROS: ");
         }
+        for (Livro livroCadastrado: listaLivros){
+            mostrarLivroCadastrados +=  livroCadastrado.toString() + "\n";
+
+        }
+
         System.out.println(mostrarLivroCadastrados);
     }
 
     public static String buscarPorISBN(ArrayList<Livro> buscarLivro){
         String mostrarLivro = "";
-        System.out.println("Digite o código do ISBN: ");
-        String isbn = sc.next();
-        for (Livro buscaLivro: buscarLivro){
-            if (buscaLivro.getIsbn().equals(isbn)){
-                mostrarLivro =  buscaLivro.toString();
-            }
 
-        }
+        boolean teste = true;
+
+        do {
+            System.out.println("Digite o código do ISBN: ");
+            String isbn = sc.next();
+            for (Livro buscaLivro: buscarLivro){
+                if (buscaLivro.getIsbn().equals(isbn)){
+                    mostrarLivro =  buscaLivro.toString();
+                    System.out.println(mostrarLivro);
+                    teste = true;
+                } else {
+                    System.out.println("ISBN inválido, digite novamente: ");
+                    teste = false;
+                }
+            break;
+            }
+        } while (teste == false);
+
         return mostrarLivro;
     }
 
@@ -104,7 +122,23 @@ public class LivroService {
         }
         System.out.println("-----------------------------");
         System.out.println("Livro atualizado com sucesso!");
-        System.out.println("-----------------------------");
+        System.out.println("-----------------------------\n");
+
+
+    }
+
+
+    public static void removerLivro(ArrayList<Livro> listaRemoverLivro){
+        buscarPorISBN(listaRemoverLivro);
+
+        for (Livro removeLivro: listaRemoverLivro) {
+            listaRemoverLivro.remove(removeLivro);
+            System.out.println("-----------------------------");
+            System.out.println("Livro removido com sucesso");
+            System.out.println("-----------------------------\n");
+            break;
+        }
+
 
 
     }
