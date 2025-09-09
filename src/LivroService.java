@@ -73,7 +73,7 @@ public class LivroService {
 
         String mostrarLivro = "";
 
-        boolean teste = true;
+        boolean verificaIsbn = true;
 
         do {
             if (isEmpty(buscarLivro).equals(false)) {
@@ -83,16 +83,16 @@ public class LivroService {
                     if (buscaLivro.getIsbn().equals(isbn)) {
                         mostrarLivro = buscaLivro.toString();
                         System.out.println(mostrarLivro);
-                        teste = true;
+                        verificaIsbn = true;
                         break;
                     } else {
-                        teste = false;
+                        verificaIsbn = false;
                     }
 
                 }
 
             }
-        } while (teste == false);
+        } while (verificaIsbn == false);
 
         return mostrarLivro;
     }
@@ -162,8 +162,6 @@ public class LivroService {
             System.out.println("-----------------------------\n");
             break;
         }
-
-
 
     }
 }

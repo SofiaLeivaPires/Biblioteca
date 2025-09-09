@@ -66,19 +66,19 @@ public class Main {
 
         switch (opcaoClinte) {
             case 1:
-                LivroService.cadastrarLivro(livrosCadastrados);
+                ClienteService.cadastrarCliente(clientesCadastrados);
                 break;
             case 2:
-                LivroService.listarLivrosCadastrados(livrosCadastrados);
+                ClienteService.listaCliente(clientesCadastrados);
                 break;
             case 3:
-                LivroService.buscarPorISBN(livrosCadastrados);
+                ClienteService.buscarPorId(clientesCadastrados);
                 break;
             case 4:
-                LivroService.atualizarLivro(livrosCadastrados);
+                ClienteService.atualizarCliente(clientesCadastrados);
                 break;
             case 5:
-                LivroService.removerLivro(livrosCadastrados);
+                ClienteService.removerCliente(clientesCadastrados);
                 break;
             default:
                 System.out.println("Opção inválida!");
