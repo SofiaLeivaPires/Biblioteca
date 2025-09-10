@@ -45,9 +45,7 @@ public class LivroService {
         Livro livroCadastrar = new Livro(isbn, nomeLivro, nomeAutor, ano);
         listaLivroCadastrar.add(livroCadastrar);
 
-        System.out.println("-----------------------------");
-        System.out.println("Livro cadastrado com suceso");
-        System.out.println("-----------------------------");
+        System.out.println("✅ Livro cadastrado com sucesso!");
 
 
     }
@@ -69,22 +67,16 @@ public class LivroService {
 
     }
 
-    public static String buscarPorISBN(ArrayList<Livro> buscarLivro){
-
-        String mostrarLivro = "";
-
+    public static Livro buscarPorISBN(ArrayList<Livro> buscarLivro){
         boolean verificaIsbn = true;
-
         do {
             if (isEmpty(buscarLivro).equals(false)) {
-                System.out.println("Digite o código do ISBN: ");
+                System.out.println("Digite o código do ISBN do livro: ");
                 String isbn = sc.next();
                 for (Livro buscaLivro : buscarLivro) {
                     if (buscaLivro.getIsbn().equals(isbn)) {
-                        mostrarLivro = buscaLivro.toString();
-                        System.out.println(mostrarLivro);
-                        verificaIsbn = true;
-                        break;
+                        System.out.println(buscaLivro);
+                        return buscaLivro;
                     } else {
                         verificaIsbn = false;
                     }
@@ -92,76 +84,58 @@ public class LivroService {
                 }
 
             }
-        } while (verificaIsbn == false);
-
-        return mostrarLivro;
+        } while (!verificaIsbn);
+        return null;
     }
 
     public static void atualizarLivro(ArrayList<Livro> atualizarLivro) {
-        buscarPorISBN(atualizarLivro);
+        Livro livroAlterar = buscarPorISBN(atualizarLivro);
 
         if (atualizarLivro.isEmpty()){
             System.out.print("");
         } else {
-
             System.out.println("O que gostaria de atualizar?");
             System.out.println("1. Nome do livro");
             System.out.println("2. Nome do autor");
             System.out.println("3. Ano de lançamento");
             int opcao = sc.nextInt();
 
-            for (Livro atualizaLivro: atualizarLivro){
-                switch (opcao){
-                    case 1:
-                        atualizaLivro.getTitulo();
-                        System.out.println("Digite o nome do livro: ");
-                        String nomeLivro = sc.next();
-                        sc.nextLine();
-                        atualizaLivro.setTitulo(nomeLivro);
-                        System.out.println(atualizaLivro);
-                        break;
-                    case 2:
-                        atualizaLivro.getAutor();
-                        System.out.println("Digite o nome do autor: ");
-                        String nomeAutor = sc.next();
-                        atualizaLivro.setAutor(nomeAutor);
-                        System.out.println(atualizaLivro);
-                        break;
-                    case 3:
-                        atualizaLivro.getAno();
-                        System.out.println("Digite o ano de lançamento: ");
-                        int ano = sc.nextInt();
-                        atualizaLivro.setAno(ano);
-                        System.out.println(atualizaLivro);
-                        break;
-                    default:
-                        break;
-
-                }
-                break;
-
-
+            switch (opcao){
+                case 1:
+                    System.out.println("Digite o nome do livro: ");
+                    String nomeLivro = sc.next();
+                    sc.nextLine();
+                    livroAlterar.setTitulo(nomeLivro);
+                    System.out.println(livroAlterar);
+                    break;
+                case 2:
+                    System.out.println("Digite o nome do autor: ");
+                    String nomeAutor = sc.next();
+                    livroAlterar.setAutor(nomeAutor);
+                    System.out.println(livroAlterar);
+                    break;
+                case 3:
+                    System.out.println("Digite o ano de lançamento: ");
+                    int ano = sc.nextInt();
+                    livroAlterar.setAno(ano);
+                    System.out.println(livroAlterar);
+                    break;
+                default:
+                    break;
             }
-            System.out.println("-----------------------------");
-            System.out.println("Livro atualizado com sucesso!");
-            System.out.println("-----------------------------\n");
-
+            System.out.println("✅ Livro atualizado com sucesso!");
         }
-
-
     }
 
-
     public static void removerLivro(ArrayList<Livro> listaRemoverLivro){
-        buscarPorISBN(listaRemoverLivro);
-
-        for (Livro removeLivro: listaRemoverLivro) {
-            listaRemoverLivro.remove(removeLivro);
-            System.out.println("-----------------------------");
-            System.out.println("Livro removido com sucesso");
-            System.out.println("-----------------------------\n");
-            break;
+        Livro removerLivro = buscarPorISBN(listaRemoverLivro);
+        if (listaRemoverLivro.isEmpty()){
+            System.out.print("");
+        } else {
+            listaRemoverLivro.remove(removerLivro);
+            System.out.println("✅ Livro removido com sucesso!");
         }
 
     }
 }
+

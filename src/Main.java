@@ -5,8 +5,25 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Livro> livrosCadastrados = new ArrayList<>();
     static ArrayList<Cliente> clientesCadastrados = new ArrayList<>();
+    static ArrayList<Emprestimo> emprestimoCadastrados = new ArrayList<>();
 
     public static void main(String[] args) {
+        livrosCadastrados.add(new Livro("1", "Dom Casmurro", "Machado de Assis", 1899));
+        livrosCadastrados.add(new Livro("2", "Memórias Póstumas de Brás Cubas", "Machado de Assis", 1881));
+        livrosCadastrados.add(new Livro("3", "A Hora da Estrela", "Clarice Lispector", 1977));
+        livrosCadastrados.add(new Livro("4", "O Cortiço", "Aluísio Azevedo", 1890));
+        livrosCadastrados.add(new Livro("5", "Vidas Secas", "Graciliano Ramos", 1938));
+        livrosCadastrados.add(new Livro("6", "Capitães da Areia", "Jorge Amado", 1937));
+        livrosCadastrados.add(new Livro("7", "O Primo Basílio", "Eça de Queirós", 1878));
+        livrosCadastrados.add(new Livro("8", "Grande Sertão: Veredas", "João Guimarães Rosa", 1956));
+        livrosCadastrados.add(new Livro("9", "Iracema", "José de Alencar", 1865));
+        livrosCadastrados.add(new Livro("10", "Senhora", "José de Alencar", 1875));
+
+        clientesCadastrados.add(new Cliente(1, "Sofia", "Sofia@email.com"));
+        clientesCadastrados.add(new Cliente(2, "Gabriel", "Gabriel@email.com"));
+        clientesCadastrados.add(new Cliente(3, "Bruno", "Bruno@email.com"));
+        clientesCadastrados.add(new Cliente(4, "Lucas", "Lucas@email.com"));
+        clientesCadastrados.add(new Cliente(5, "Ana", "Ana@email.com"));
         Menu();
     }
 
@@ -28,6 +45,7 @@ public class Main {
         System.out.println("3. Buscar por ISBN");
         System.out.println("4. Atualizar livro");
         System.out.println("5. Remover livro");
+        System.out.println("6. Voltar ao menu");
         int opcaoLivro = lerOpcao();
 
         switch (opcaoLivro) {
@@ -46,6 +64,9 @@ public class Main {
             case 5:
                 LivroService.removerLivro(livrosCadastrados);
                 break;
+            case 6:
+                Menu();
+                break;
             default:
                 System.out.println("Opção inválida!");
                 System.out.println("Tente novamente ");
@@ -61,6 +82,7 @@ public class Main {
         System.out.println("3. Buscar por ID");
         System.out.println("4. Atualizar cliente");
         System.out.println("5. Remover cliente");
+        System.out.println("6. Voltar ao menu");
 
         int opcaoClinte = lerOpcao();
 
@@ -80,6 +102,9 @@ public class Main {
             case 5:
                 ClienteService.removerCliente(clientesCadastrados);
                 break;
+            case 6:
+                Menu();
+                break;
             default:
                 System.out.println("Opção inválida!");
                 System.out.println("Tente novamente ");
@@ -94,24 +119,25 @@ public class Main {
         System.out.println("2. Devolver livro");
         System.out.println("3. Listar abertos");
         System.out.println("4. Histórico por cliente");
+        System.out.println("5. Voltar ao menu");
 
         int opcaoEmprestimo = lerOpcao();
 
         switch (opcaoEmprestimo) {
             case 1:
-                EmprestimoService.cadastrarCliente(clientesCadastrados);
+                EmprestimoService.emprestar(emprestimoCadastrados, livrosCadastrados, clientesCadastrados);
                 break;
             case 2:
-                EmprestimoService.listaCliente(clientesCadastrados);
+//                EmprestimoService.listaCliente(clientesCadastrados);
                 break;
             case 3:
-                EmprestimoService.buscarPorId(clientesCadastrados);
+//                EmprestimoService.buscarPorId(clientesCadastrados);
                 break;
             case 4:
-                EmprestimoService.atualizarCliente(clientesCadastrados);
+//                EmprestimoService.atualizarCliente(clientesCadastrados);
                 break;
             case 5:
-                EmprestimoService.removerCliente(clientesCadastrados);
+                Menu();
                 break;
             default:
                 System.out.println("Opção inválida!");
