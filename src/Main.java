@@ -115,7 +115,7 @@ public class Main {
 
     public static void SubmenuEmprestimo(){
         System.out.println("=====EMPRÉSTIMO=====");
-        System.out.println("1. Emprestar livro");
+        System.out.println("1. Fazer empréstimo");
         System.out.println("2. Devolver livro");
         System.out.println("3. Listar abertos");
         System.out.println("4. Histórico por cliente");
@@ -128,13 +128,13 @@ public class Main {
                 EmprestimoService.emprestar(emprestimoCadastrados, livrosCadastrados, clientesCadastrados);
                 break;
             case 2:
-//                EmprestimoService.listaCliente(clientesCadastrados);
+//              EmprestimoService.listaCliente(clientesCadastrados);
                 break;
             case 3:
-//                EmprestimoService.buscarPorId(clientesCadastrados);
+//              EmprestimoService.buscarPorId(clientesCadastrados);
                 break;
             case 4:
-//                EmprestimoService.atualizarCliente(clientesCadastrados);
+//              EmprestimoService.atualizarCliente(clientesCadastrados);
                 break;
             case 5:
                 Menu();

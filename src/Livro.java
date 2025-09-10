@@ -61,13 +61,13 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro{" +
-                "isbn='" + isbn + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", ano=" + ano +
-                ", disponivel=" + disponivel +
-                '}';
+        return "\n----------------------------------" +
+                "\n📖 Livro #" + isbn +
+                "\n   Título: " + titulo +
+                "\n   Autor: " + autor +
+                "\n   Ano: " + ano +
+                "\n   Disponível: " + (disponivel ? "Sim ✅" : "Não ❌") +
+                "\n----------------------------------";
     }
 
     public void set(String nomeLivro) {

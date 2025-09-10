@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,8 +29,8 @@ public class EmprestimoService {
             return;
         }
 
-        LocalDateTime dataSaida = LocalDate.now().atStartOfDay();
-        LocalDateTime dataPrevista = dataSaida.plusWeeks(1);
+        LocalDate dataSaida = LocalDate.now();
+        LocalDate dataPrevista = dataSaida.plusWeeks(1);
         LocalDateTime dataDevolucao = null;
 
         int novoId;
@@ -55,6 +56,9 @@ public class EmprestimoService {
 
         System.out.println("✅ Empréstimo realizado com sucesso!");
         System.out.println(emprestimo);
+    }
 
+    public static void devolver(ArrayList<Emprestimo> listaEmprestimo){
+        System.out.println("Qual ");
     }
 }
