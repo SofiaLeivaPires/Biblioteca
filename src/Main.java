@@ -11,14 +11,10 @@ public class Main {
     public static void main(String[] args) {
         livrosCadastrados.add(new Livro("1", "Dom Casmurro", "Machado de Assis", 1899));
         livrosCadastrados.add(new Livro("2", "Memórias Póstumas de Brás Cubas", "Machado de Assis", 1881));
-        livrosCadastrados.add(new Livro("3", "A Hora da Estrela", "Clarice Lispector", 1977));
-        livrosCadastrados.add(new Livro("4", "O Cortiço", "Aluísio Azevedo", 1890));
-        livrosCadastrados.add(new Livro("5", "Vidas Secas", "Graciliano Ramos", 1938));
-        livrosCadastrados.add(new Livro("6", "Capitães da Areia", "Jorge Amado", 1937));
-        livrosCadastrados.add(new Livro("7", "O Primo Basílio", "Eça de Queirós", 1878));
-        livrosCadastrados.add(new Livro("8", "Grande Sertão: Veredas", "João Guimarães Rosa", 1956));
-        livrosCadastrados.add(new Livro("9", "Iracema", "José de Alencar", 1865));
-        livrosCadastrados.add(new Livro("10", "Senhora", "José de Alencar", 1875));
+//        livrosCadastrados.add(new Livro("3", "A Hora da Estrela", "Clarice Lispector", 1977));
+//        livrosCadastrados.add(new Livro("4", "O Cortiço", "Aluísio Azevedo", 1890));
+//        livrosCadastrados.add(new Livro("5", "Vidas Secas", "Graciliano Ramos", 1938));
+
 
         clientesCadastrados.add(new Cliente(1, "Sofia", "Sofia@email.com"));
         clientesCadastrados.add(new Cliente(2, "Gabriel", "Gabriel@email.com"));
@@ -26,13 +22,15 @@ public class Main {
         clientesCadastrados.add(new Cliente(4, "Lucas", "Lucas@email.com"));
         clientesCadastrados.add(new Cliente(5, "Ana", "Ana@email.com"));
 
-        emprestimoCadastrados.add(new Emprestimo(1, new Livro("1", "Dom Casmurro", "Machado de Assis", 1899),
-                new Cliente(1, "Sofia", "Sofia@email.com"), LocalDate.now(),LocalDate.now() ));
+//        emprestimoCadastrados.add(new Emprestimo(1, new Livro("1", "Dom Casmurro", "Machado de Assis", 1899),
+//                new Cliente(1, "Sofia", "Sofia@email.com"), LocalDate.now(),LocalDate.now() ));
+//
+//
+//        emprestimoCadastrados.add(new Emprestimo(2, new Livro("2", "Memórias Póstumas de Brás Cubas", "Machado de Assis", 1881),
+//                new Cliente(1, "Sofia", "Sofia@email.com"), LocalDate.now(),LocalDate.now() ));
 
-        emprestimoCadastrados.add(new Emprestimo(1, new Livro("2", "Memórias Póstumas de Brás Cubas", "Machado de Assis", 1881),
-                new Cliente(1, "Sofia", "Sofia@email.com"), LocalDate.now(),LocalDate.now() ));
 
-        emprestimoCadastrados.get(0).setDataDevolvida(LocalDate.now());
+
         Menu();
     }
 
@@ -137,13 +135,13 @@ public class Main {
                 EmprestimoService.emprestar(emprestimoCadastrados, livrosCadastrados, clientesCadastrados);
                 break;
             case 2:
-//              EmprestimoService.listaCliente(clientesCadastrados);
+              EmprestimoService.devolver(emprestimoCadastrados, livrosCadastrados, clientesCadastrados);
                 break;
             case 3:
               EmprestimoService.listarAbertos(emprestimoCadastrados);
                 break;
             case 4:
-//              EmprestimoService.atualizarCliente(clientesCadastrados);
+              EmprestimoService.historicoCliente(emprestimoCadastrados, livrosCadastrados, clientesCadastrados);
                 break;
             case 5:
                 Menu();

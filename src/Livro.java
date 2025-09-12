@@ -55,8 +55,9 @@ public class Livro {
         this.ano = ano;
     }
 
-    public void setDisponivel(boolean disponivel) {
+    public boolean setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
+        return disponivel;
     }
 
     @Override
