@@ -70,7 +70,7 @@ public class LivroService {
     public static Livro buscarPorISBN(ArrayList<Livro> buscarLivro){
         boolean verificaIsbn = true;
         do {
-            if (isEmpty(buscarLivro).equals(false)) {
+            if (!isEmpty(buscarLivro)) {
                 System.out.println("Digite o código do ISBN do livro: ");
                 String isbn = sc.next();
                 for (Livro buscaLivro : buscarLivro) {

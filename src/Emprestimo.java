@@ -10,13 +10,13 @@ public class Emprestimo {
     private LocalDate dataDevolvida;
 
     public Emprestimo(int id, Livro livro, Cliente cliente,
-                      LocalDate dataSaida, LocalDate dataDevolucaoPrevista, LocalDate dataDevolvida) {
+                      LocalDate dataSaida, LocalDate dataDevolucaoPrevista) {
         this.id = id;
         this.livro = livro;
         this.cliente = cliente;
         this.dataSaida = dataSaida;
         this.dataDevolucaoPrevista = dataDevolucaoPrevista;
-        this.dataDevolvida = dataDevolvida; // normalmente null no início
+        this.dataDevolvida = null;
     }
 
     public int getId() {

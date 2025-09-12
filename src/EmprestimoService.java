@@ -47,8 +47,8 @@ public class EmprestimoService {
                 livroEmprestimo,
                 clienteEmprestimo,
                 dataSaida,
-                dataPrevista,
-                null
+                dataPrevista
+
         );
 
         listaEmprestimo.add(emprestimo);
@@ -59,6 +59,28 @@ public class EmprestimoService {
     }
 
     public static void devolver(ArrayList<Emprestimo> listaEmprestimo){
-        System.out.println("Qual ");
+
+
+    }
+
+
+    public static void listarAbertos(ArrayList<Emprestimo> listaEmprestimo){
+        String mostrarEmprestimosAbertos = "";
+        int devolvidos = 0;
+
+        for (Emprestimo emprestimoCadastro: listaEmprestimo){
+            if (emprestimoCadastro.getDataDevolvida() == null){
+                mostrarEmprestimosAbertos += emprestimoCadastro.toString();
+            } else {
+                devolvidos++;
+
+            }
+            if(listaEmprestimo.isEmpty()){
+                System.out.println("Sua lista está vazia");
+            }
+
+        }
+        System.out.println(mostrarEmprestimosAbertos);
+        System.out.println( "Quantidade livros devolvidos: " + devolvidos);
     }
 }

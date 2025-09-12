@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +25,14 @@ public class Main {
         clientesCadastrados.add(new Cliente(3, "Bruno", "Bruno@email.com"));
         clientesCadastrados.add(new Cliente(4, "Lucas", "Lucas@email.com"));
         clientesCadastrados.add(new Cliente(5, "Ana", "Ana@email.com"));
+
+        emprestimoCadastrados.add(new Emprestimo(1, new Livro("1", "Dom Casmurro", "Machado de Assis", 1899),
+                new Cliente(1, "Sofia", "Sofia@email.com"), LocalDate.now(),LocalDate.now() ));
+
+        emprestimoCadastrados.add(new Emprestimo(1, new Livro("2", "Memórias Póstumas de Brás Cubas", "Machado de Assis", 1881),
+                new Cliente(1, "Sofia", "Sofia@email.com"), LocalDate.now(),LocalDate.now() ));
+
+        emprestimoCadastrados.get(0).setDataDevolvida(LocalDate.now());
         Menu();
     }
 
@@ -131,7 +140,7 @@ public class Main {
 //              EmprestimoService.listaCliente(clientesCadastrados);
                 break;
             case 3:
-//              EmprestimoService.buscarPorId(clientesCadastrados);
+              EmprestimoService.listarAbertos(emprestimoCadastrados);
                 break;
             case 4:
 //              EmprestimoService.atualizarCliente(clientesCadastrados);
